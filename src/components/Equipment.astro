@@ -17,10 +17,10 @@ const { items } = Astro.props;
       </span>
       Equipment
     </h3>
-    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2">
       {items.map((item) => (
-        <li class="flex items-center gap-3 bg-cream p-3 brutal-border">
-          <span class="w-2 h-2 bg-rust rounded-full flex-shrink-0"></span>
+        <li class="flex items-center gap-3">
+          <span class="w-3 h-3 bg-rust rounded-sm flex-shrink-0"></span>
           <span class="font-medium">{item}</span>
         </li>
       ))}

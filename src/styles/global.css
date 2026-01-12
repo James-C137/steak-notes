@@ -92,4 +92,102 @@
     background-color: var(--color-rust);
     z-index: 50;
   }
+
+  /* MDX/Prose neobrutalist styles */
+  .prose-brutal hr {
+    border: none;
+    height: 3px;
+    background-color: var(--color-charcoal);
+    margin: 3rem 0;
+  }
+
+  .prose-brutal ol {
+    counter-reset: brutal-counter;
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .prose-brutal ol > li {
+    counter-increment: brutal-counter;
+    position: relative;
+    padding-left: 3.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .prose-brutal ol > li::before {
+    content: counter(brutal-counter);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2rem;
+    height: 2rem;
+    background-color: var(--color-charcoal);
+    color: var(--color-cream);
+    font-family: var(--font-mono);
+    font-weight: bold;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.25rem;
+  }
+
+  .prose-brutal > ul,
+  .prose-brutal > * > ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .prose-brutal > ul > li,
+  .prose-brutal > * > ul > li {
+    position: relative;
+    padding-left: 1.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .prose-brutal > ul > li::before,
+  .prose-brutal > * > ul > li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    width: 0.75rem;
+    height: 0.75rem;
+    background-color: var(--color-rust);
+    border-radius: 0.125rem;
+  }
+
+  /* Exclude component lists from prose bullet styling */
+  .prose-brutal .brutal-border ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .prose-brutal .brutal-border ul > li {
+    padding-left: 0;
+  }
+
+  .prose-brutal .brutal-border ul > li::before {
+    display: none;
+  }
+
+  .prose-brutal :not(pre) > code {
+    background-color: var(--color-sand);
+    border: 2px solid var(--color-charcoal);
+    border-radius: 0.25rem;
+    padding: 0.125rem 0.375rem;
+    font-size: 0.875em;
+  }
+
+  .prose-brutal blockquote {
+    border-left: 4px solid var(--color-rust);
+    background-color: var(--color-sand);
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    font-style: normal;
+  }
+
+  .prose-brutal blockquote p {
+    margin: 0;
+  }
 }
