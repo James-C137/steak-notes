@@ -25,10 +25,10 @@ const recipes = await getCollection('recipes');
             <div>
               <h3 class="text-xl font-bold mb-2">{recipe.data.title}</h3>
               <p class="text-ink/70 mb-4">{recipe.data.description}</p>
-              <div class="flex gap-4 text-sm font-mono">
-                <span class="bg-sand px-3 py-1 border-2 border-charcoal">{recipe.data.cut}</span>
-                <span class="bg-sand px-3 py-1 border-2 border-charcoal">{recipe.data.cookTime}</span>
-                <span class="bg-coral/20 px-3 py-1 border-2 border-charcoal">{recipe.data.difficulty}</span>
+              <div class="flex flex-wrap gap-2 text-sm font-mono">
+                <span class="bg-sand px-3 py-1 border-2 border-charcoal rounded whitespace-nowrap">{recipe.data.cut}</span>
+                <span class="bg-sand px-3 py-1 border-2 border-charcoal rounded whitespace-nowrap">{recipe.data.cookTime}</span>
+                <span class="bg-coral/20 px-3 py-1 border-2 border-charcoal rounded whitespace-nowrap">{recipe.data.difficulty}</span>
               </div>
             </div>
             <span class="text-rust font-black text-2xl">→</span>

@@ -1,0 +1,99 @@
+---
+title: "Reverse Sear New York Strip"
+description: "A precise, scientific approach to the perfect medium-rare New York Strip with optimal crust development"
+cut: "New York Strip"
+cookTime: "8+ hours (including dry brine)"
+difficulty: "medium"
+publishedAt: 2025-01-12
+---
+
+import TempChart from '../../components/TempChart.tsx';
+import Callout from '../../components/Callout.astro';
+import Equipment from '../../components/Equipment.astro';
+import Ingredients from '../../components/Ingredients.astro';
+
+The reverse sear flips traditional steak cooking on its head. Instead of searing first, we start low and finish hot. The result? **Edge-to-edge medium-rare** with a crackling crust and minimal thermal gradient.
+
+<Equipment items={[
+  "Oven",
+  "12\" cast iron pan",
+  "Digital instant read thermometer",
+  "Metal tongs",
+  "Wire rack",
+  "Digital scale"
+]} />
+
+<Ingredients items={[
+  "1.5\" thick Prime New York Strip",
+  "Kosher salt",
+  "Finely ground black pepper",
+  "Garlic powder",
+  "Avocado oil"
+]} />
+
+## The Science: Maillard Reaction
+
+The crust forms through the **Maillard reaction**, which occurs optimally between **350-450°F**. This is why we heat the pan above 500°F—the steak acts as a heat sink, dropping the contact surface into that ideal range.
+
+<Callout type="tip" title="Why garlic powder?">
+Salt and pepper alone won't make a pan-seared steak taste great. Garlic powder at 4% by mass is the secret weapon that transforms good into exceptional.
+</Callout>
+
+## Method
+
+### Phase 1: Dry Brine (8 hours)
+
+1. **Salt**: Add **2% salt by mass** to steak, rub on all sides. You need more salt than you think—some falls off, and it's hard to over-salt steaks.
+
+2. **Pepper**: Add pepper to preference, rub on all sides.
+
+3. **Garlic powder**: Add **4% by mass**, rub on all sides. This is extremely important for flavor development.
+
+4. **Dry brine**: Place on wire rack and refrigerate for **8 hours**. This is the optimal point of salt penetration vs excessive dryness.
+
+### Phase 2: Low & Slow (Oven)
+
+<TempChart
+  client:visible
+  title="Internal Temperature Curve"
+  targetTemp={128}
+  data={[
+    { time: 0, temp: 38 },
+    { time: 10, temp: 65 },
+    { time: 20, temp: 90 },
+    { time: 30, temp: 108 },
+    { time: 40, temp: 120 },
+    { time: 50, temp: 128 },
+  ]}
+/>
+
+1. **Dry the surface**: Dab off all excess moisture with paper towels. This is critical—moisture pulls away heat and prevents proper Maillard reaction.
+
+2. **Bake at 200°F** until center reaches **128°F**. At this low temperature, there's less than 1 degree of carryover, locking the meat at the optimal balance between tenderness/juiciness and doneness.
+
+<Callout type="tip" title="Why 128°F?">
+Pulling at 128°F with minimal carryover gives you perfect medium-rare throughout. The slow cooking means enzymes have more time to tenderize while proteins denature evenly.
+</Callout>
+
+### Phase 3: The Sear
+
+1. **Heat the pan**: Add enough avocado oil to coat the bottom and heat until slightly smoking. Maintain at exactly that equilibrium (just above 500°F). Use an IR thermometer if unsure.
+
+2. **Sear 30 seconds per side**, flipping until crust is deep brown. This should take **3 minutes maximum**. The slight thermal gradient is worth the extra crust.
+
+<Callout type="warning" title="Heat management">
+If your pan loses too much heat, take the steak off and let the oil start smoking again. Taking the steak off and putting it back on is completely acceptable—it allows heat recovery.
+</Callout>
+
+3. **Sear the sides** for 30 seconds each. Take extra care around the fat cap—30 seconds could be too long and lead to charring. Check frequently.
+
+### Phase 4: Serve Immediately
+
+**No rest needed.** The "resting to retain juices" advice is a myth. It has applications for letting meat reach thermal equilibrium, but our steak is already in equilibrium from slow cooking. We actually *don't* want the surface heat to travel inside—cut immediately and serve.
+
+## Why This Works
+
+- **8-hour dry brine**: Optimal salt penetration without excessive dryness
+- **200°F oven**: Near-zero carryover, perfect temperature control
+- **500°F+ pan**: Drops to 350-450°F on contact—ideal Maillard range
+- **No rest**: Preserves the thermal equilibrium achieved through slow cooking

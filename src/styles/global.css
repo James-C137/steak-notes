@@ -33,6 +33,7 @@
 
   pre {
     border: 3px solid var(--color-charcoal);
+    border-radius: 0.5rem;
     background-color: var(--color-ink);
     color: var(--color-cream);
     padding: 1rem;
@@ -49,10 +50,12 @@
 @layer components {
   .brutal-border {
     border: 3px solid var(--color-charcoal);
+    border-radius: 0.5rem;
   }
 
   .brutal-card {
     border: 3px solid var(--color-charcoal);
+    border-radius: 0.75rem;
     background-color: white;
     box-shadow: var(--shadow-brutal);
     transition: all 150ms;
@@ -64,6 +67,7 @@
 
   .brutal-button {
     border: 3px solid var(--color-charcoal);
+    border-radius: 0.5rem;
     background-color: var(--color-coral);
     color: white;
     font-weight: bold;

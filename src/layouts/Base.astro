@@ -5,9 +5,10 @@ import ReadingProgress from '../components/ReadingProgress.astro';
 interface Props {
   title: string;
   description?: string;
+  showProgress?: boolean;
 }
 
-const { title, description = 'Steak Labs - The science of perfect steak' } = Astro.props;
+const { title, description = 'Steak Labs - The science of perfect steak', showProgress = false } = Astro.props;
 ---
 
 <!doctype html>
@@ -22,7 +23,7 @@ const { title, description = 'Steak Labs - The science of perfect steak' } = Ast
     <title>{title} | Steak Labs</title>
   </head>
   <body class="min-h-screen">
-    <ReadingProgress />
+    {showProgress && <ReadingProgress />}
 
     <header class="border-b-3 border-charcoal bg-sand">
       <nav class="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
