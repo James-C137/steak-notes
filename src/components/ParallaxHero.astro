@@ -1,0 +1,44 @@
+---
+interface Props {
+  image: string;
+  height?: string;
+}
+
+const { image, height = '60vh' } = Astro.props;
+---
+
+<div
+  class="parallax-hero relative overflow-hidden border-b-3 border-charcoal"
+  style={`height: ${height}`}
+>
+  <div
+    class="parallax-bg absolute inset-0 bg-cover bg-center"
+    style={`background-image: url(${image})`}
+  ></div>
+  <div class="relative z-10 h-full flex items-center justify-center">
+    <div class="text-center">
+      <slot />
+    </div>
+  </div>
+</div>
+
+<script>
+  const parallaxBg = document.querySelector('.parallax-bg') as HTMLElement;
+
+  function updateParallax() {
+    const scrolled = window.scrollY;
+    const rate = scrolled * 0.5;
+
+    if (parallaxBg) {
+      parallaxBg.style.transform = `translateY(${rate}px)`;
+    }
+  }
+
+  window.addEventListener('scroll', updateParallax, { passive: true });
+</script>
+
+<style>
+  .parallax-hero {
+    perspective: 1px;
+  }
+</style>

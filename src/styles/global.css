@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+/* Anthropic-inspired palette */
+@theme {
+  --color-cream: #FAF9F7;
+  --color-sand: #E8E4DD;
+  --color-charcoal: #1A1A1A;
+  --color-rust: #D4714A;
+  --color-coral: #E07A5F;
+  --color-ink: #2D2D2D;
+
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Neobrutalism shadows */
+  --shadow-brutal: 4px 4px 0px 0px var(--color-charcoal);
+  --shadow-brutal-lg: 6px 6px 0px 0px var(--color-charcoal);
+  --shadow-brutal-sm: 2px 2px 0px 0px var(--color-charcoal);
+}
+
+/* Base styles - in layer to properly cascade after Tailwind resets */
+@layer base {
+  body {
+    background-color: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, h4 {
+    font-weight: bold;
+    color: var(--color-charcoal);
+  }
+
+  pre {
+    border: 3px solid var(--color-charcoal);
+    background-color: var(--color-ink);
+    color: var(--color-cream);
+    padding: 1rem;
+    overflow-x: auto;
+  }
+
+  code {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+  }
+}
+
+/* Component classes */
+@layer components {
+  .brutal-border {
+    border: 3px solid var(--color-charcoal);
+  }
+
+  .brutal-card {
+    border: 3px solid var(--color-charcoal);
+    background-color: white;
+    box-shadow: var(--shadow-brutal);
+    transition: all 150ms;
+  }
+  .brutal-card:hover {
+    box-shadow: var(--shadow-brutal-sm);
+    transform: translate(2px, 2px);
+  }
+
+  .brutal-button {
+    border: 3px solid var(--color-charcoal);
+    background-color: var(--color-coral);
+    color: white;
+    font-weight: bold;
+    padding: 0.75rem 1.5rem;
+    box-shadow: var(--shadow-brutal);
+    transition: all 150ms;
+  }
+  .brutal-button:hover {
+    box-shadow: var(--shadow-brutal-sm);
+    transform: translate(2px, 2px);
+  }
+  .brutal-button:active {
+    box-shadow: none;
+    transform: translate(4px, 4px);
+  }
+
+  .reading-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background-color: var(--color-rust);
+    z-index: 50;
+  }
+}

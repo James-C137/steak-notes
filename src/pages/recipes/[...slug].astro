@@ -1,0 +1,46 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+
+export async function getStaticPaths() {
+  const recipes = await getCollection('recipes');
+  return recipes.map((recipe) => ({
+    params: { slug: recipe.id },
+    props: { recipe },
+  }));
+}
+
+const { recipe } = Astro.props;
+const { Content } = await render(recipe);
+---
+
+<Base title={recipe.data.title} description={recipe.data.description}>
+  <article class="max-w-3xl mx-auto px-6 py-12">
+    <header class="mb-12">
+      <div class="flex gap-4 text-sm font-mono mb-4">
+        <span class="bg-sand px-3 py-1 border-2 border-charcoal">{recipe.data.cut}</span>
+        <span class="bg-sand px-3 py-1 border-2 border-charcoal">{recipe.data.cookTime}</span>
+        <span class="bg-coral/20 px-3 py-1 border-2 border-charcoal">{recipe.data.difficulty}</span>
+      </div>
+      <h1 class="text-5xl font-black mb-4">{recipe.data.title}</h1>
+      <p class="text-xl text-ink/70">{recipe.data.description}</p>
+    </header>
+
+    <div class="prose prose-lg max-w-none
+                prose-headings:font-black prose-headings:text-charcoal
+                prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-6 prose-h2:pb-2 prose-h2:border-b-3 prose-h2:border-charcoal
+                prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4
+                prose-p:text-ink prose-p:leading-relaxed
+                prose-strong:text-charcoal
+                prose-ul:my-4 prose-li:my-1
+                prose-a:text-rust prose-a:font-bold prose-a:no-underline hover:prose-a:underline">
+      <Content />
+    </div>
+
+    <footer class="mt-16 pt-8 border-t-3 border-charcoal">
+      <a href="/" class="brutal-button inline-block">
+        ← Back to recipes
+      </a>
+    </footer>
+  </article>
+</Base>

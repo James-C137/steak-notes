@@ -1,0 +1,21 @@
+---
+interface Props {
+  type?: 'info' | 'warning' | 'tip';
+  title?: string;
+}
+
+const { type = 'info', title } = Astro.props;
+
+const styles = {
+  info: 'bg-sand border-charcoal',
+  warning: 'bg-coral/20 border-rust',
+  tip: 'bg-cream border-rust',
+};
+---
+
+<aside class={`brutal-border p-6 my-8 ${styles[type]}`}>
+  {title && <p class="font-black text-lg mb-2">{title}</p>}
+  <div class="prose prose-sm">
+    <slot />
+  </div>
+</aside>

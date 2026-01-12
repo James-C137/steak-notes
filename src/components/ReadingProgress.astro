@@ -1,0 +1,22 @@
+---
+// Reading progress bar - shows scroll position through article
+---
+
+<div id="reading-progress" class="reading-progress w-0"></div>
+
+<script>
+  const progressBar = document.getElementById('reading-progress');
+
+  function updateProgress() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+
+    if (progressBar) {
+      progressBar.style.width = `${progress}%`;
+    }
+  }
+
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  updateProgress();
+</script>
