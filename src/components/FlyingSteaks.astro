@@ -1,20 +1,21 @@
 ---
 // Flying steaks effect - spawns Minecraft steak from cursor on click
+const baseUrl = import.meta.env.BASE_URL;
 ---
 
-<script>
+<script define:vars={{ baseUrl }}>
   function initFlyingSteaks() {
     const titleBox = document.querySelector('[data-steak-target]');
     if (!titleBox) return;
 
-    titleBox.addEventListener('click', (e: MouseEvent) => {
+    titleBox.addEventListener('click', (e) => {
       spawnSteak(e.clientX, e.clientY);
     });
   }
 
-  function spawnSteak(startX: number, startY: number) {
+  function spawnSteak(startX, startY) {
     const steak = document.createElement('img');
-    steak.src = '/steak.png';
+    steak.src = `${baseUrl}/steak.png`;
     steak.className = 'flying-steak';
     document.body.appendChild(steak);
 
@@ -37,7 +38,7 @@
 
     let lastTime = performance.now();
 
-    function animate(currentTime: number) {
+    function animate(currentTime) {
       const dt = (currentTime - lastTime) / 1000; // delta in seconds
       lastTime = currentTime;
 

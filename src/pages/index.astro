@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import { getCollection } from 'astro:content';
 import Tags from '../components/Tags.tsx';
+import Card from '../components/Card.astro';
 
 const recipes = await getCollection('recipes');
 ---
@@ -21,7 +22,7 @@ const recipes = await getCollection('recipes');
 
     <div class="grid gap-6">
       {recipes.map((recipe) => (
-        <a href={`/recipes/${recipe.id}`} class="brutal-card bg-cream p-6 block">
+        <Card as="a" href={`${import.meta.env.BASE_URL}/recipes/${recipe.id}`} background="bg-cream" class="block">
           <div class="flex justify-between items-start">
             <div>
               <h3 class="text-xl font-bold mb-2">{recipe.data.title}</h3>
@@ -30,7 +31,7 @@ const recipes = await getCollection('recipes');
             </div>
             <span class="text-ochre font-black text-2xl">→</span>
           </div>
-        </a>
+        </Card>
       ))}
     </div>
   </section>

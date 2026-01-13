@@ -1,0 +1,34 @@
+---
+interface Props {
+  background?: string;
+  borderColor?: string;
+  as?: 'div' | 'section' | 'aside' | 'article' | 'a';
+  padding?: string;
+  margin?: string;
+  class?: string;
+  [key: string]: any;
+}
+
+const {
+  background = '',
+  borderColor = 'border-charcoal',
+  as: Element = 'div',
+  padding = 'p-6',
+  margin = '',
+  class: className = '',
+  ...rest
+} = Astro.props;
+
+const classes = [
+  'brutal-border brutal-list',
+  borderColor,
+  background,
+  padding,
+  margin,
+  className,
+].filter(Boolean).join(' ');
+---
+
+<Element class={classes} {...rest}>
+  <slot />
+</Element>

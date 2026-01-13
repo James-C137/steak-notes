@@ -8,7 +8,7 @@ interface TempChartProps {
 
 export default function TempChart({ data, targetTemp, title }: TempChartProps) {
   return (
-    <div className="brutal-card p-6 my-8 bg-white">
+    <div className="brutal-border brutal-list p-6 my-8 bg-white">
       {title && <h4 className="text-lg font-bold mb-4 text-charcoal">{title}</h4>}
       <ResponsiveContainer width="100%" height={300}>
         <LineChart data={data} margin={{ top: 20, right: 30, left: 0, bottom: 0 }}>
