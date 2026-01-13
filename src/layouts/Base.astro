@@ -8,7 +8,7 @@ interface Props {
   showProgress?: boolean;
 }
 
-const { title, description = 'Steak Labs - The science of perfect steak', showProgress = false } = Astro.props;
+const { title, description = "Steak Notes - The science of perfect steak", showProgress = false } = Astro.props;
 ---
 
 <!doctype html>
@@ -20,7 +20,7 @@ const { title, description = 'Steak Labs - The science of perfect steak', showPr
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=JetBrains+Mono&display=swap" rel="stylesheet" />
-    <title>{title} | Steak Labs</title>
+    <title>{title} | Steak Notes</title>
   </head>
   <body class="min-h-screen">
     {showProgress && <ReadingProgress />}
@@ -28,7 +28,7 @@ const { title, description = 'Steak Labs - The science of perfect steak', showPr
     <header class="border-b-3 border-charcoal bg-cream">
       <nav class="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
         <a href="/" class="text-2xl font-black text-charcoal hover:text-ochre transition-colors">
-          STEAK LABS
+          STEAK NOTES
         </a>
         <div class="flex gap-6">
           <a href="/recipes" class="font-bold hover:text-ochre transition-colors">Recipes</a>
@@ -43,7 +43,7 @@ const { title, description = 'Steak Labs - The science of perfect steak', showPr
 
     <footer class="border-t-3 border-charcoal bg-sand mt-16">
       <div class="max-w-4xl mx-auto px-6 py-8 text-center">
-        <p class="font-mono text-sm text-ink/60">Steak Labs — Where science meets sizzle</p>
+        <p class="font-mono text-sm text-ink/60">Steak Notes — Made with &lt;3 by James</p>
       </div>
     </footer>
   </body>

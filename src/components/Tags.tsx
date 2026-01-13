@@ -24,7 +24,7 @@ export default function Tags({ tags }: Props) {
         return (
           <span
             key={tag.label}
-            className="bg-sand px-3 py-1 border-2 border-charcoal rounded whitespace-nowrap flex items-center gap-1.5"
+            className="bg-ochre/20 px-3 py-1 border-2 border-charcoal rounded whitespace-nowrap flex items-center gap-1.5"
           >
             {Icon && <Icon className="w-3.5 h-3.5" />}
             {tag.label}

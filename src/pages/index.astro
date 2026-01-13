@@ -9,9 +9,9 @@ const recipes = await getCollection('recipes');
 <Base title="Home">
   <section class="bg-ochre text-white border-b-3 border-charcoal">
     <div class="max-w-4xl mx-auto px-6 py-24 text-center">
-      <h1 class="text-6xl font-black mb-6 text-white">STEAK LABS</h1>
+      <h1 class="text-6xl font-black mb-6 text-white">STEAK NOTES</h1>
       <p class="text-xl max-w-2xl mx-auto opacity-90">
-        Where science meets sizzle. Recipes backed by reasoning, complete with the data to prove it.
+        James' personal steak notes. Includes recipes and experiments from his quest to cook better steak.
       </p>
     </div>
   </section>
@@ -21,7 +21,7 @@ const recipes = await getCollection('recipes');
 
     <div class="grid gap-6">
       {recipes.map((recipe) => (
-        <a href={`/recipes/${recipe.id}`} class="brutal-card p-6 block">
+        <a href={`/recipes/${recipe.id}`} class="brutal-card bg-parchment p-6 block">
           <div class="flex justify-between items-start">
             <div>
               <h3 class="text-xl font-bold mb-2">{recipe.data.title}</h3>
