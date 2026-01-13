@@ -22,8 +22,10 @@ const { Content } = await render(recipe);
         <span class="bg-sand px-3 py-1 border-2 border-charcoal rounded whitespace-nowrap">{recipe.data.cookTime}</span>
         <span class="bg-coral/20 px-3 py-1 border-2 border-charcoal rounded whitespace-nowrap">{recipe.data.difficulty}</span>
       </div>
-      <h1 class="text-5xl font-black mb-4">{recipe.data.title}</h1>
-      <p class="text-xl text-ink/70">{recipe.data.description}</p>
+      <div class="bg-ochre border-3 border-charcoal rounded-lg p-6 shadow-brutal">
+        <h1 class="text-5xl font-black mb-4 text-cream">{recipe.data.title}</h1>
+        <p class="text-xl text-cream/80">{recipe.data.description}</p>
+      </div>
     </header>
 
     <div class="prose prose-lg prose-brutal max-w-none
@@ -32,7 +34,7 @@ const { Content } = await render(recipe);
                 prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4
                 prose-p:text-ink prose-p:leading-relaxed
                 prose-strong:text-charcoal
-                prose-a:text-rust prose-a:font-bold prose-a:no-underline hover:prose-a:underline">
+                prose-a:text-ochre prose-a:font-bold prose-a:no-underline hover:prose-a:underline">
       <Content />
     </div>
 

@@ -9,8 +9,7 @@ publishedAt: 2025-01-12
 
 import TempChart from '../../components/TempChart.tsx';
 import Callout from '../../components/Callout.astro';
-import Equipment from '../../components/Equipment.astro';
-import Ingredients from '../../components/Ingredients.astro';
+import ItemList from '../../components/ItemList.tsx';
 
 ## Overview
 
@@ -18,7 +17,11 @@ The reverse sear flips traditional steak cooking on its head. Instead of searing
 
 ---
 
-<Equipment
+<ItemList
+  title="Equipment"
+  icon="cooking-pot"
+  variant="sage"
+  columns
   items={[
     "Oven",
     "12\" cast iron pan",
@@ -29,7 +32,10 @@ The reverse sear flips traditional steak cooking on its head. Instead of searing
   ]}
 />
 
-<Ingredients
+<ItemList
+  title="Ingredients"
+  icon="clipboard"
+  variant="ochre"
   items={[
     "1.5\" thick Prime New York Strip",
     "Kosher salt",
