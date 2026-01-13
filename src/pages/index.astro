@@ -3,12 +3,13 @@ import Base from '../layouts/Base.astro';
 import { getCollection } from 'astro:content';
 import Tags from '../components/Tags.tsx';
 import Card from '../components/Card.astro';
+import FlyingSteaks from '../components/FlyingSteaks.astro';
 
 const recipes = await getCollection('recipes');
 ---
 
 <Base title="Home">
-  <section class="bg-ochre text-white border-b-3 border-charcoal">
+  <section class="bg-ochre text-white border-b-3 border-charcoal cursor-pointer select-none" data-steak-target>
     <div class="max-w-4xl mx-auto px-6 py-24 text-center">
       <h1 class="text-6xl font-black mb-6 text-white">STEAK NOTES</h1>
       <p class="text-xl max-w-2xl mx-auto opacity-90">
@@ -35,4 +36,5 @@ const recipes = await getCollection('recipes');
       ))}
     </div>
   </section>
+  <FlyingSteaks />
 </Base>

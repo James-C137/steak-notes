@@ -5,7 +5,6 @@ interface Props {
   items: string[];
   icon: 'cooking-pot' | 'clipboard';
   variant?: 'ochre' | 'sage' | 'terracotta' | 'parchment';
-  columns?: boolean;
 }
 
 const icons = {
@@ -20,9 +19,8 @@ const variantStyles = {
   parchment: { bg: 'bg-parchment', accent: 'bg-ochre' },
 };
 
-export default function ItemList({ title, items, icon, variant = 'ochre', columns = false }: Props) {
+export default function ItemList({ title, items, icon, variant = 'ochre' }: Props) {
   const styles = variantStyles[variant];
-  const listClass = columns ? 'grid grid-cols-1 sm:grid-cols-2 gap-2' : 'space-y-2';
 
   const Icon = icons[icon];
 
@@ -35,7 +33,7 @@ export default function ItemList({ title, items, icon, variant = 'ochre', column
           </span>
           {title}
         </h3>
-        <ul className={listClass}>
+        <ul className="space-y-2">
           {items.map((item) => (
             <li key={item} className="flex items-center gap-3">
               <span className="w-8 flex-shrink-0 flex justify-center">
