@@ -6,9 +6,10 @@ const recipes = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    cut: z.string(),
-    cookTime: z.string(),
-    difficulty: z.enum(['easy', 'medium', 'advanced']),
+    tags: z.array(z.object({
+      label: z.string(),
+      icon: z.enum(['clock', 'flame', 'thermometer', 'beef']).optional(),
+    })).optional(),
     heroImage: z.string().optional(),
     publishedAt: z.coerce.date(),
   }),

@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
+import Tags from '../../components/Tags.tsx';
 
 export async function getStaticPaths() {
   const recipes = await getCollection('recipes');
@@ -17,11 +18,7 @@ const { Content } = await render(recipe);
 <Base title={recipe.data.title} description={recipe.data.description} showProgress>
   <article class="max-w-3xl mx-auto px-6 py-12">
     <header class="mb-12">
-      <div class="flex flex-wrap gap-2 text-sm font-mono mb-4">
-        <span class="bg-sand px-3 py-1 border-2 border-charcoal rounded whitespace-nowrap">{recipe.data.cut}</span>
-        <span class="bg-sand px-3 py-1 border-2 border-charcoal rounded whitespace-nowrap">{recipe.data.cookTime}</span>
-        <span class="bg-coral/20 px-3 py-1 border-2 border-charcoal rounded whitespace-nowrap">{recipe.data.difficulty}</span>
-      </div>
+      {recipe.data.tags && <div class="mb-4"><Tags tags={recipe.data.tags} /></div>}
       <div class="bg-ochre border-3 border-charcoal rounded-lg p-6 shadow-brutal">
         <h1 class="text-5xl font-black mb-4 text-cream">{recipe.data.title}</h1>
         <p class="text-xl text-cream/80">{recipe.data.description}</p>
