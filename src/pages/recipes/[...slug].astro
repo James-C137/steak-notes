@@ -21,19 +21,13 @@ const { Content } = await render(recipe);
   <article class="max-w-3xl mx-auto px-6 py-12">
     <header class="mb-12">
       {recipe.data.tags && <div class="mb-4"><Tags tags={recipe.data.tags} /></div>}
-      <Card background="bg-ochre" class="cursor-pointer select-none" data-steak-target>
+      <Card background="bg-ochre" padding="px-6 py-8" class="cursor-pointer select-none" data-steak-target>
         <h1 class="text-5xl font-black mb-4 text-cream">{recipe.data.title}</h1>
         <p class="text-xl text-cream/80">{recipe.data.description}</p>
       </Card>
     </header>
 
-    <div class="prose prose-lg prose-brutal max-w-none
-                prose-headings:font-black prose-headings:text-charcoal
-                prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-6 prose-h2:pb-2 prose-h2:border-b-3 prose-h2:border-charcoal
-                prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4
-                prose-p:text-ink prose-p:leading-relaxed
-                prose-strong:text-charcoal
-                prose-a:text-ochre prose-a:font-bold prose-a:no-underline hover:prose-a:underline">
+    <div class="prose-brutal max-w-none">
       <Content />
     </div>
 
