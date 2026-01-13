@@ -28,7 +28,7 @@ export default function ItemList({ title, items, icon, variant = 'ochre', column
 
   return (
     <section className="my-8">
-      <div className={`brutal-border ${styles.bg} p-6`}>
+      <div className={`brutal-border brutal-list ${styles.bg} p-6`}>
         <h3 className="font-black text-lg mb-4 flex items-center gap-3">
           <span className={`inline-flex w-8 h-8 ${styles.accent} text-cream items-center justify-center rounded`}>
             <Icon className="w-4 h-4" />

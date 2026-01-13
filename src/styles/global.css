@@ -29,7 +29,7 @@
 /* Base styles - in layer to properly cascade after Tailwind resets */
 @layer base {
   body {
-    background-color: var(--color-cream);
+    background-color: var(--color-parchment);
     color: var(--color-ink);
     font-family: var(--font-sans);
   }
@@ -69,6 +69,15 @@
     transition: all 150ms;
   }
   .brutal-card:hover {
+    box-shadow: var(--shadow-brutal-sm);
+    transform: translate(2px, 2px);
+  }
+
+  .brutal-list {
+    box-shadow: var(--shadow-brutal);
+    transition: all 150ms;
+  }
+  .brutal-list:hover {
     box-shadow: var(--shadow-brutal-sm);
     transform: translate(2px, 2px);
   }
