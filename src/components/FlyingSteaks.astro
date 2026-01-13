@@ -1,0 +1,86 @@
+---
+// Flying steaks effect - spawns Minecraft steak from cursor on click
+---
+
+<script>
+  function initFlyingSteaks() {
+    const titleBox = document.querySelector('[data-steak-target]');
+    if (!titleBox) return;
+
+    titleBox.addEventListener('click', (e: MouseEvent) => {
+      spawnSteak(e.clientX, e.clientY);
+    });
+  }
+
+  function spawnSteak(startX: number, startY: number) {
+    const steak = document.createElement('img');
+    steak.src = '/steak.png';
+    steak.className = 'flying-steak';
+    document.body.appendChild(steak);
+
+    // Physics constants
+    const gravity = 800; // pixels per second squared
+
+    // Initial velocity - random horizontal, upward vertical
+    const angle = -Math.PI / 2 + (Math.random() - 0.5) * 1.2; // -90deg ± ~35deg
+    const speed = 300 + Math.random() * 150; // 300-450 px/s
+    let vx = Math.cos(angle) * speed;
+    let vy = Math.sin(angle) * speed;
+
+    // Position (centered on cursor)
+    let x = startX - 16;
+    let y = startY - 16;
+
+    // Spin
+    let rotation = 0;
+    const spinSpeed = (Math.random() - 0.5) * 600; // deg per second
+
+    let lastTime = performance.now();
+
+    function animate(currentTime: number) {
+      const dt = (currentTime - lastTime) / 1000; // delta in seconds
+      lastTime = currentTime;
+
+      // Apply gravity to vertical velocity
+      vy += gravity * dt;
+
+      // Update position
+      x += vx * dt;
+      y += vy * dt;
+
+      // Update rotation
+      rotation += spinSpeed * dt;
+
+      // Fade out when falling below starting point
+      const fallDistance = y - (startY - 16);
+      let opacity = 1;
+      if (fallDistance > 0) {
+        opacity = Math.max(0, 1 - fallDistance / 150);
+        if (opacity <= 0) {
+          steak.remove();
+          return;
+        }
+      }
+
+      // Apply transform (translate3d forces GPU layer)
+      steak.style.transform = `translate3d(${x}px, ${y}px, 0) rotate(${rotation}deg)`;
+      steak.style.opacity = String(opacity);
+
+      requestAnimationFrame(animate);
+    }
+
+    // Start at origin, let transform handle positioning
+    steak.style.left = '0';
+    steak.style.top = '0';
+    steak.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+
+    requestAnimationFrame(animate);
+  }
+
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFlyingSteaks);
+  } else {
+    initFlyingSteaks();
+  }
+</script>

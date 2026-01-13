@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import Tags from '../../components/Tags.tsx';
+import FlyingSteaks from '../../components/FlyingSteaks.astro';
 
 export async function getStaticPaths() {
   const recipes = await getCollection('recipes');
@@ -19,7 +20,7 @@ const { Content } = await render(recipe);
   <article class="max-w-3xl mx-auto px-6 py-12">
     <header class="mb-12">
       {recipe.data.tags && <div class="mb-4"><Tags tags={recipe.data.tags} /></div>}
-      <div class="bg-ochre border-3 border-charcoal rounded-lg p-6 shadow-brutal">
+      <div class="bg-ochre border-3 border-charcoal rounded-lg p-6 shadow-brutal cursor-pointer select-none" data-steak-target>
         <h1 class="text-5xl font-black mb-4 text-cream">{recipe.data.title}</h1>
         <p class="text-xl text-cream/80">{recipe.data.description}</p>
       </div>
@@ -41,4 +42,5 @@ const { Content } = await render(recipe);
       </a>
     </footer>
   </article>
+  <FlyingSteaks />
 </Base>

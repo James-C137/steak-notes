@@ -207,4 +207,16 @@
   .prose-brutal blockquote p {
     margin: 0;
   }
+
+  /* Flying steak particle */
+  .flying-steak {
+    position: fixed;
+    width: 32px;
+    height: 32px;
+    pointer-events: none;
+    z-index: 9999;
+    image-rendering: pixelated;
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+  }
 }
