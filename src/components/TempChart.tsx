@@ -6,9 +6,20 @@ interface TempChartProps {
   title?: string;
 }
 
+const cardStyle: React.CSSProperties = {
+  border: '3px solid var(--color-charcoal)',
+  borderRadius: '0.5rem',
+  boxShadow: 'var(--shadow-brutal)',
+  transition: 'all 150ms',
+  padding: '1.5rem',
+  marginTop: '2rem',
+  marginBottom: '2rem',
+  backgroundColor: 'white',
+};
+
 export default function TempChart({ data, targetTemp, title }: TempChartProps) {
   return (
-    <div className="brutal-border brutal-list p-6 my-8 bg-white">
+    <div style={cardStyle} className="temp-chart-container">
       {title && <h4 className="text-lg font-bold mb-4 text-charcoal">{title}</h4>}
       <ResponsiveContainer width="100%" height={300}>
         <LineChart data={data} margin={{ top: 20, right: 30, left: 0, bottom: 0 }}>

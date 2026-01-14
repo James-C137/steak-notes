@@ -1,0 +1,27 @@
+/* Base styles - in layer to properly cascade after Tailwind resets */
+@layer base {
+  body {
+    background-color: var(--color-parchment);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, h4 {
+    font-weight: bold;
+    color: var(--color-charcoal);
+  }
+
+  pre {
+    border: 3px solid var(--color-charcoal);
+    border-radius: 0.5rem;
+    background-color: var(--color-ink);
+    color: var(--color-cream);
+    padding: 1rem;
+    overflow-x: auto;
+  }
+
+  code {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+  }
+}

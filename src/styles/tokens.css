@@ -1,0 +1,25 @@
+/* Anthropic-inspired palette */
+@theme {
+  --color-cream: #FAF9F7;
+  --color-sand: #E8E4DD;
+  --color-charcoal: #1A1A1A;
+  --color-coral: #E07A5F;
+  --color-ink: #2D2D2D;
+
+  /* Neobrutalist accents */
+  --color-ochre: #E0823D;
+  --color-terracotta: #C75B39;
+  --color-sage: #7A9E7E;
+  --color-clay: #B86B4A;
+  --color-parchment: #F5EDE0;
+  --color-forest: #528555;
+  --color-brick: #8B3A2F;
+
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Neobrutalism shadows */
+  --shadow-brutal: 4px 4px 0px 0px var(--color-charcoal);
+  --shadow-brutal-lg: 6px 6px 0px 0px var(--color-charcoal);
+  --shadow-brutal-sm: 2px 2px 0px 0px var(--color-charcoal);
+}

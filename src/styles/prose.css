@@ -1,0 +1,105 @@
+/* MDX/Prose neobrutalist styles
+ * Uses :where() for low specificity so component styles automatically win
+ * Wrapped in @layer so Tailwind utilities can override
+ */
+
+@layer components {
+
+:where(.prose-brutal) h2 {
+  font-size: 1.75rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 3px solid var(--color-charcoal);
+}
+
+:where(.prose-brutal) h3 {
+  font-size: 1.25rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+:where(.prose-brutal) hr {
+  border: none;
+  height: 3px;
+  background-color: var(--color-charcoal);
+  margin: 3rem 0;
+}
+
+:where(.prose-brutal) ol {
+  counter-reset: brutal-counter;
+  list-style: none;
+  padding-left: 0;
+}
+
+:where(.prose-brutal) ol > li {
+  counter-increment: brutal-counter;
+  position: relative;
+  padding-left: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+:where(.prose-brutal) ol > li::before {
+  content: counter(brutal-counter);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2rem;
+  height: 2rem;
+  background-color: var(--color-charcoal);
+  color: var(--color-cream);
+  font-family: var(--font-mono);
+  font-weight: bold;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.25rem;
+}
+
+:where(.prose-brutal) > ul,
+:where(.prose-brutal) > * > ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+:where(.prose-brutal) > ul > li,
+:where(.prose-brutal) > * > ul > li {
+  position: relative;
+  padding-left: 1.75rem;
+  margin-bottom: 0.75rem;
+}
+
+:where(.prose-brutal) > ul > li::before,
+:where(.prose-brutal) > * > ul > li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+  width: 0.75rem;
+  height: 0.75rem;
+  background-color: var(--color-ochre);
+  border-radius: 0.125rem;
+}
+
+:where(.prose-brutal) :not(pre) > code {
+  background-color: var(--color-sand);
+  border: 2px solid var(--color-charcoal);
+  border-radius: 0.25rem;
+  padding: 0.125rem 0.375rem;
+  font-size: 0.875em;
+}
+
+:where(.prose-brutal) blockquote {
+  border-left: 4px solid var(--color-ochre);
+  background-color: var(--color-sand);
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  font-style: normal;
+}
+
+:where(.prose-brutal) blockquote p {
+  margin: 0;
+}
+
+}

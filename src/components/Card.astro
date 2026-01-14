@@ -20,7 +20,7 @@ const {
 } = Astro.props;
 
 const classes = [
-  'brutal-border brutal-list',
+  'card',
   borderColor,
   background,
   padding,
@@ -32,3 +32,16 @@ const classes = [
 <Element class={classes} {...rest}>
   <slot />
 </Element>
+
+<style>
+  .card {
+    border: 3px solid var(--color-charcoal);
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow-brutal);
+    transition: all 150ms;
+  }
+  .card:hover {
+    box-shadow: var(--shadow-brutal-sm);
+    transform: translate(2px, 2px);
+  }
+</style>
