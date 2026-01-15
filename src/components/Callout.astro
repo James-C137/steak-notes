@@ -11,24 +11,24 @@ interface Props {
 const { type = 'question', title, collapsed = false } = Astro.props;
 
 const typeConfig = {
-  question: { accent: 'sky', Icon: CircleHelp },
-  warning: { accent: 'ochre', Icon: TriangleAlert },
-  tip: { accent: 'charcoal', Icon: Lightbulb },
+  question: { accent: 'sky', bg: 'bg-sky/25', text: 'text-sky', iconBg: 'bg-sky', Icon: CircleHelp },
+  warning: { accent: 'ochre', bg: 'bg-ochre/25', text: 'text-ochre', iconBg: 'bg-ochre', Icon: TriangleAlert },
+  tip: { accent: 'charcoal', bg: 'bg-charcoal/25', text: 'text-charcoal', iconBg: 'bg-charcoal', Icon: Lightbulb },
 } as const;
 
-const { accent, Icon } = typeConfig[type];
+const { accent, bg, text, iconBg, Icon } = typeConfig[type];
 ---
 
 <Card
   as="aside"
-  background={`bg-${accent}/25`}
+  background={bg}
   accentColor={accent}
   collapsible={collapsed}
   margin={collapsed ? 'my-4' : 'my-8'}
   class={collapsed ? 'callout-collapsible' : ''}
 >
   <Fragment slot="summary">
-    <span class={`callout-header flex items-center gap-3 text-${accent}`}>
+    <span class:list={['callout-header flex items-center gap-3', text]}>
       <span class="callout-icon inline-flex w-8 h-8 items-center justify-center rounded">
         <Icon size={16} />
       </span>
@@ -38,7 +38,7 @@ const { accent, Icon } = typeConfig[type];
 
   {title && !collapsed && (
     <p class="font-black text-lg mb-2 mt-0 flex items-center gap-3">
-      <span class={`inline-flex w-8 h-8 bg-${accent} text-cream items-center justify-center rounded`}>
+      <span class:list={['inline-flex w-8 h-8 text-cream items-center justify-center rounded', iconBg]}>
         <Icon size={16} />
       </span>
       {title}
