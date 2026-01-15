@@ -1,4 +1,13 @@
-/* Anthropic-inspired palette */
+/*
+ * Design Tokens
+ *
+ * Colors in @theme generate Tailwind utilities (bg-ochre, text-sage, etc.)
+ * but get tree-shaken if unused. Colors in :root are always included.
+ *
+ * Use @theme for colors used in Tailwind classes throughout the codebase.
+ * Use :root for colors only referenced dynamically (e.g., via var(--color-x)).
+ */
+
 @theme {
   --color-cream: #FAF9F7;
   --color-sand: #E8E4DD;
@@ -6,7 +15,6 @@
   --color-coral: #E07A5F;
   --color-ink: #2D2D2D;
 
-  /* Neobrutalist accents */
   --color-ochre: #E0823D;
   --color-terracotta: #C75B39;
   --color-sage: #7A9E7E;
@@ -14,12 +22,16 @@
   --color-parchment: #F5EDE0;
   --color-forest: #528555;
   --color-brick: #8B3A2F;
+  --color-sky: #5B9BD5;
 
   --font-sans: 'Inter', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
-  /* Neobrutalism shadows */
   --shadow-brutal: 4px 4px 0px 0px var(--color-charcoal);
   --shadow-brutal-lg: 6px 6px 0px 0px var(--color-charcoal);
   --shadow-brutal-sm: 2px 2px 0px 0px var(--color-charcoal);
+}
+
+:root {
+  --color-navy: #2B5797;
 }

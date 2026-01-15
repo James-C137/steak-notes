@@ -1,7 +1,9 @@
 ---
+type ThemeColor = 'charcoal' | 'ochre' | 'terracotta' | 'sage' | 'clay' | 'forest' | 'brick' | 'coral' | 'ink' | 'sky' | 'navy';
+
 interface Props {
   background?: string;
-  borderColor?: string;
+  borderColor?: ThemeColor;
   as?: 'div' | 'section' | 'aside' | 'article' | 'a';
   padding?: string;
   margin?: string;
@@ -11,7 +13,7 @@ interface Props {
 
 const {
   background = '',
-  borderColor = 'border-charcoal',
+  borderColor = 'charcoal',
   as: Element = 'div',
   padding = 'p-6',
   margin = '',
@@ -21,27 +23,28 @@ const {
 
 const classes = [
   'card',
-  borderColor,
   background,
   padding,
   margin,
   className,
 ].filter(Boolean).join(' ');
+
+const cardStyle = `--card-color: var(--color-${borderColor})`;
 ---
 
-<Element class={classes} {...rest}>
+<Element class={classes} style={cardStyle} {...rest}>
   <slot />
 </Element>
 
 <style>
   .card {
-    border: 3px solid var(--color-charcoal);
+    border: 3px solid var(--card-color);
     border-radius: 0.5rem;
-    box-shadow: var(--shadow-brutal);
+    box-shadow: 4px 4px 0px 0px var(--card-color);
     transition: all 150ms;
   }
   .card:hover {
-    box-shadow: var(--shadow-brutal-sm);
+    box-shadow: 2px 2px 0px 0px var(--card-color);
     transform: translate(2px, 2px);
   }
 </style>

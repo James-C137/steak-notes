@@ -1,27 +1,38 @@
 ---
 import Card from './Card.astro';
+import { CircleHelp, TriangleAlert, Lightbulb } from 'lucide-astro';
 
 interface Props {
-  type?: 'info' | 'warning' | 'tip';
+  type?: 'question' | 'warning' | 'tip';
   title?: string;
 }
 
-const { type = 'info', title } = Astro.props;
+const { type = 'question', title } = Astro.props;
 
 const styles = {
-  info: { background: 'bg-white', borderColor: 'border-charcoal' },
-  warning: { background: 'bg-parchment', borderColor: 'border-ochre' },
-  tip: { background: 'bg-white', borderColor: 'border-charcoal' },
-};
+  question: { background: 'bg-sky/25', borderColor: 'charcoal', accent: 'bg-sky', Icon: CircleHelp },
+  warning: { background: 'bg-ochre/25', borderColor: 'charcoal', accent: 'bg-ochre', Icon: TriangleAlert },
+  tip: { background: 'bg-white', borderColor: 'charcoal', accent: 'bg-charcoal', Icon: Lightbulb },
+} as const;
+
+const currentStyle = styles[type];
+const Icon = currentStyle.Icon;
 ---
 
 <Card
   as="aside"
-  background={styles[type].background}
-  borderColor={styles[type].borderColor}
+  background={currentStyle.background}
+  borderColor={currentStyle.borderColor}
   margin="my-8"
 >
-  {title && <p class="font-black text-lg mb-2">{title}</p>}
+  {title && (
+    <p class="font-black text-lg mb-2 mt-0 flex items-center gap-3">
+      <span class={`inline-flex w-8 h-8 ${currentStyle.accent} text-cream items-center justify-center rounded`}>
+        <Icon size={16} />
+      </span>
+      {title}
+    </p>
+  )}
   <div class="text-sm">
     <slot />
   </div>
