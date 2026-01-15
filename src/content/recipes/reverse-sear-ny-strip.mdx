@@ -44,61 +44,74 @@ This is an unpretentious steak made with humble ingredients, tried-and-true meth
     "Kosher salt",
     "Finely ground black pepper",
     "Garlic powder",
-    "Avocado oil",
+    "Ghee",
   ]}
 />
-
-## The Science: Maillard Reaction
-
-The crust forms through the **Maillard reaction**, which occurs optimally between **350-450°F**. This is why we heat the pan above 500°F—the steak acts as a heat sink, dropping the contact surface into that ideal range.
-
-<Callout type="question" title="Why garlic powder?">
-  Salt and pepper alone won't make a pan-seared steak taste great. Garlic powder at 4% by mass is the secret weapon that transforms good into exceptional.
-</Callout>
 
 ## Method
 
 ### Phase 1: Dry Brine (8 hours)
 
-1. **Salt**: Add **2% salt by mass** to steak, rub on all sides. You need more salt than you think—some falls off, and it's hard to over-salt steaks.
+1. **Salt**: Add **2% salt by mass** to steak, rub on all sides.
+
+   <Callout type="question" title="Why 2% salt?">
+     2% salt seems like a lot, but it's hard to over-salt steaks and some falls off. Individual preference also varies wildly, but slightly too salty is a lot tastier than not salty enough. Finetune to your own preference, which will likely be between 1 to 2.5%.
+   </Callout>
 
 2. **Pepper**: Add pepper to preference, rub on all sides.
 
-3. **Garlic powder**: Add **4% by mass**, rub on all sides. This is extremely important for flavor development.
+3. **Garlic powder**: Add **4% by mass**, rub on all sides.
 
-4. **Dry brine**: Place on wire rack and refrigerate for **8 hours**. This is the optimal point of salt penetration vs excessive dryness.
+   <Callout type="question" title="Why so much garlic?">
+     Garlic works incredibly well with steak. During the sear, it'll also slightly char to create a great flavor.
+   </Callout>
+
+4. **Dry brine**: Place on wire rack and refrigerate for **8 hours**.
+
+   <Callout type="question" title="Why 8 hours?">
+     You can dry brine anywhere from 1 hour to 24 hours. More time = more salt penetration and dryness, but overdoing it develops a tough "pellicle" which isn't pleasant to eat. 8 hours is the sweet spot, and over 16 hours is too much from my experimentation.
+   </Callout>
 
 ### Phase 2: Low & Slow (Oven)
 
-<TempChart
-  client:visible
-  title="Internal Temperature Curve"
-  targetTemp={128}
-  data={[
-    { time: 0, temp: 38 },
-    { time: 10, temp: 65 },
-    { time: 20, temp: 90 },
-    { time: 30, temp: 108 },
-    { time: 40, temp: 120 },
-    { time: 50, temp: 128 },
-  ]}
-/>
+1. **Dry the surface**: Dab off all excess moisture with paper towels.
 
-1. **Dry the surface**: Dab off all excess moisture with paper towels. This is critical—moisture pulls away heat and prevents proper Maillard reaction.
+   <Callout type="warning" title="Surface moisture control">
+     This step is absolutely necessary. It takes a lot of energy to convert water to steam, which takes away from the sear. Most home stoves are already underpowered, so even a **slightly** wet steak will ruin the sear.
+   </Callout>
 
-2. **Bake at 200°F** until center reaches **128°F**. At this low temperature, there's less than 1 degree of carryover, locking the meat at the optimal balance between tenderness/juiciness and doneness.
+2. **Bake at 200°F** until center reaches **128°F**.
 
-   <Callout type="question" title="Why 128°F?" collapsed>
-     Pulling at 128°F with minimal carryover gives you perfect medium-rare throughout. The slow cooking means enzymes have more time to tenderize while proteins denature evenly.
+   <TempChart
+     client:visible
+     title="Internal Temperature Curve"
+     targetTemp={128}
+     ovenTemp={200}
+     data={[
+       { time: 0, core: 38, surface: 35 },
+       { time: 10, core: 65, surface: 80 },
+       { time: 20, core: 90, surface: 110 },
+       { time: 30, core: 108, surface: 130 },
+       { time: 40, core: 120, surface: 142 },
+       { time: 50, core: 128, surface: 150 },
+     ]}
+   />
+
+   <Callout type="question" title="Why bake at 200°F?">
+     The lower the oven's temperature, the lower the difference between the surface and the core temperature during the slow baking phase. At 200°F, this difference is around 20°F by the time the center reaches 128. Higher temperatures develop a much bigger gradient, but up to 250°F is acceptable.
+   </Callout>
+
+   <Callout type="question" title="Why 128°F?">
+     When baking at 200, there is a negligible amount (less than 1°F) of carryover cooking, especially for thinner steaks that you would normally find at a supermarket. Pulling at 128 locks the center temperature at a perfect medium-rare.
    </Callout>
 
 ### Phase 3: The Sear
 
-1. **Heat the pan**: Add enough avocado oil to coat the bottom and heat until slightly smoking. Maintain at exactly that equilibrium (just above 500°F). Use an IR thermometer if unsure.
+1. **Heat the pan**: Add enough ghee to coat the bottom and heat until slightly smoking. Maintain at exactly that equilibrium (just above 500°F). Use an IR thermometer if unsure.
 
 2. **Sear 30 seconds per side**, flipping until crust is deep brown. This should take **3 minutes maximum**. The slight thermal gradient is worth the extra crust.
 
-   <Callout type="warning" title="Heat management" collapsed>
+   <Callout type="warning" title="Heat management">
      If your pan loses too much heat, take the steak off and let the oil start smoking again. Taking the steak off and putting it back on is completely acceptable—it allows heat recovery.
    </Callout>
 
@@ -106,11 +119,4 @@ The crust forms through the **Maillard reaction**, which occurs optimally betwee
 
 ### Phase 4: Serve Immediately
 
-**No rest needed.** The "resting to retain juices" advice is a myth. It has applications for letting meat reach thermal equilibrium, but our steak is already in equilibrium from slow cooking. We actually *don't* want the surface heat to travel inside—cut immediately and serve.
-
-## Why This Works
-
-- **8-hour dry brine**: Optimal salt penetration without excessive dryness
-- **200°F oven**: Near-zero carryover, perfect temperature control
-- **500°F+ pan**: Drops to 350-450°F on contact—ideal Maillard range
-- **No rest**: Preserves the thermal equilibrium achieved through slow cooking
+1. **No rest needed.** The "resting to retain juices" advice is a myth. It has applications for letting meat reach thermal equilibrium, but our steak is already in equilibrium from slow cooking. We actually *don't* want the surface heat to travel inside—cut immediately and serve.
