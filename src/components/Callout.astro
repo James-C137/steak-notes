@@ -5,35 +5,82 @@ import { CircleHelp, TriangleAlert, Lightbulb } from 'lucide-astro';
 interface Props {
   type?: 'question' | 'warning' | 'tip';
   title?: string;
+  collapsed?: boolean;
 }
 
-const { type = 'question', title } = Astro.props;
+const { type = 'question', title, collapsed = false } = Astro.props;
 
-const styles = {
-  question: { background: 'bg-sky/25', borderColor: 'charcoal', accent: 'bg-sky', Icon: CircleHelp },
-  warning: { background: 'bg-ochre/25', borderColor: 'charcoal', accent: 'bg-ochre', Icon: TriangleAlert },
-  tip: { background: 'bg-white', borderColor: 'charcoal', accent: 'bg-charcoal', Icon: Lightbulb },
+const typeConfig = {
+  question: { accent: 'sky', Icon: CircleHelp },
+  warning: { accent: 'ochre', Icon: TriangleAlert },
+  tip: { accent: 'charcoal', Icon: Lightbulb },
 } as const;
 
-const currentStyle = styles[type];
-const Icon = currentStyle.Icon;
+const { accent, Icon } = typeConfig[type];
 ---
 
 <Card
   as="aside"
-  background={currentStyle.background}
-  borderColor={currentStyle.borderColor}
-  margin="my-8"
+  background={`bg-${accent}/25`}
+  accentColor={accent}
+  collapsible={collapsed}
+  margin={collapsed ? 'my-4' : 'my-8'}
+  class={collapsed ? 'callout-collapsible' : ''}
 >
-  {title && (
+  <Fragment slot="summary">
+    <span class={`callout-header flex items-center gap-3 text-${accent}`}>
+      <span class="callout-icon inline-flex w-8 h-8 items-center justify-center rounded">
+        <Icon size={16} />
+      </span>
+      <span class="callout-title">{title}</span>
+    </span>
+  </Fragment>
+
+  {title && !collapsed && (
     <p class="font-black text-lg mb-2 mt-0 flex items-center gap-3">
-      <span class={`inline-flex w-8 h-8 ${currentStyle.accent} text-cream items-center justify-center rounded`}>
+      <span class={`inline-flex w-8 h-8 bg-${accent} text-cream items-center justify-center rounded`}>
         <Icon size={16} />
       </span>
       {title}
     </p>
   )}
-  <div class="text-sm">
-    <slot />
-  </div>
+  <slot />
 </Card>
+
+<style>
+  .callout-header {
+    --duration: 0.3s;
+    --ease: cubic-bezier(0.4, 0, 0.2, 1);
+    transition:
+      color var(--duration) var(--ease),
+      font-weight var(--duration) var(--ease),
+      font-size var(--duration) var(--ease),
+      margin-bottom var(--duration) var(--ease);
+  }
+
+  .callout-icon {
+    transition: background-color var(--duration) var(--ease), color var(--duration) var(--ease);
+  }
+
+  .callout-title {
+    border-bottom: 2px dotted currentColor;
+    transition: border-color var(--duration) var(--ease);
+  }
+
+  /* Open state */
+  :global(.callout-collapsible[open]) .callout-header {
+    color: var(--color-charcoal);
+    font-weight: 900;
+    font-size: 1.125rem;
+    margin-bottom: 0.5rem;
+  }
+
+  :global(.callout-collapsible[open]) .callout-icon {
+    background-color: var(--card-accent);
+    color: var(--color-cream);
+  }
+
+  :global(.callout-collapsible[open]) .callout-title {
+    border-color: transparent;
+  }
+</style>

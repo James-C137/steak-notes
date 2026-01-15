@@ -4,9 +4,11 @@ type ThemeColor = 'charcoal' | 'ochre' | 'terracotta' | 'sage' | 'clay' | 'fores
 interface Props {
   background?: string;
   borderColor?: ThemeColor;
+  accentColor?: ThemeColor;
   as?: 'div' | 'section' | 'aside' | 'article' | 'a';
   padding?: string;
   margin?: string;
+  collapsible?: boolean;
   class?: string;
   [key: string]: any;
 }
@@ -14,37 +16,103 @@ interface Props {
 const {
   background = '',
   borderColor = 'charcoal',
+  accentColor,
   as: Element = 'div',
   padding = 'p-6',
   margin = '',
+  collapsible = false,
   class: className = '',
   ...rest
 } = Astro.props;
 
+const hasSummary = Astro.slots.has('summary');
+
 const classes = [
-  'card',
-  background,
-  padding,
+  collapsible ? 'card-collapsible' : 'card',
+  !collapsible && background,
+  !collapsible && padding,
   margin,
   className,
 ].filter(Boolean).join(' ');
 
-const cardStyle = `--card-color: var(--color-${borderColor})`;
+const cardStyle = [
+  `--card-color: var(--color-${borderColor})`,
+  accentColor && `--card-accent: var(--color-${accentColor})`,
+  accentColor && `--card-bg: color-mix(in srgb, var(--color-${accentColor}) 25%, transparent)`,
+].filter(Boolean).join('; ');
 ---
 
-<Element class={classes} style={cardStyle} {...rest}>
-  <slot />
-</Element>
+{collapsible ? (
+  <details class={classes} style={cardStyle} {...rest}>
+    {hasSummary && (
+      <summary class="card-summary">
+        <slot name="summary" />
+      </summary>
+    )}
+    <div class="card-content">
+      <slot />
+    </div>
+  </details>
+) : (
+  <Element class={classes} style={cardStyle} {...rest}>
+    <slot />
+  </Element>
+)}
 
 <style>
   .card {
     border: 3px solid var(--card-color);
     border-radius: 0.5rem;
     box-shadow: 4px 4px 0px 0px var(--card-color);
-    transition: all 150ms;
+    transition: box-shadow 150ms, transform 150ms;
   }
   .card:hover {
     box-shadow: 2px 2px 0px 0px var(--card-color);
     transform: translate(2px, 2px);
+  }
+
+  /* Collapsible card */
+  .card-collapsible {
+    --duration: 0.3s;
+    --ease: cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 0.5rem;
+    border: 3px solid transparent;
+    box-shadow: 0 0 0 0 var(--card-color);
+    transition:
+      background-color var(--duration) var(--ease),
+      border-color var(--duration) var(--ease),
+      box-shadow var(--duration) var(--ease),
+      padding var(--duration) var(--ease);
+  }
+
+  .card-summary {
+    cursor: pointer;
+    list-style: none;
+  }
+  .card-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .card-content {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    transition:
+      grid-template-rows var(--duration) var(--ease),
+      opacity var(--duration) var(--ease);
+  }
+  .card-content > :global(*) {
+    overflow: hidden;
+  }
+
+  .card-collapsible[open] {
+    padding: 1.5rem;
+    border-color: var(--card-color);
+    box-shadow: 4px 4px 0px 0px var(--card-color);
+    background-color: var(--card-bg);
+  }
+  .card-collapsible[open] .card-content {
+    grid-template-rows: 1fr;
+    opacity: 1;
   }
 </style>

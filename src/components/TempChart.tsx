@@ -1,4 +1,5 @@
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine } from 'recharts';
+import styles from './TempChart.module.css';
 
 interface TempChartProps {
   data: { time: number; temp: number }[];
@@ -6,24 +7,13 @@ interface TempChartProps {
   title?: string;
 }
 
-const cardStyle: React.CSSProperties = {
-  border: '3px solid var(--color-charcoal)',
-  borderRadius: '0.5rem',
-  boxShadow: 'var(--shadow-brutal)',
-  transition: 'all 150ms',
-  padding: '1.5rem',
-  marginTop: '2rem',
-  marginBottom: '2rem',
-  backgroundColor: 'white',
-};
-
 export default function TempChart({ data, targetTemp, title }: TempChartProps) {
   return (
-    <div style={cardStyle} className="temp-chart-container">
+    <div className={styles.card}>
       {title && <h4 className="text-lg font-bold mb-4 text-charcoal">{title}</h4>}
       <ResponsiveContainer width="100%" height={300}>
-        <LineChart data={data} margin={{ top: 20, right: 30, left: 0, bottom: 0 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#E8E4DD" />
+        <LineChart data={data} margin={{ top: 20, right: 30, left: 10, bottom: 20 }}>
+          <CartesianGrid strokeDasharray="3 3" stroke="rgba(26, 26, 26, 0.2)" />
           <XAxis
             dataKey="time"
             label={{ value: 'Minutes', position: 'bottom', offset: -5 }}
@@ -35,26 +25,31 @@ export default function TempChart({ data, targetTemp, title }: TempChartProps) {
           />
           <Tooltip
             contentStyle={{
-              border: '3px solid #1A1A1A',
-              boxShadow: '4px 4px 0px 0px #1A1A1A',
-              borderRadius: 0,
+              border: '3px solid var(--color-charcoal)',
+              boxShadow: '4px 4px 0px 0px var(--color-charcoal)',
+              borderRadius: '0.5rem',
+              backgroundColor: 'var(--color-parchment)',
             }}
+            labelStyle={{ color: 'var(--color-charcoal)' }}
+            itemStyle={{ color: 'var(--color-charcoal)' }}
+            labelFormatter={(value) => `${value} min`}
+            formatter={(value: number) => [`${value}°F`, 'Temp']}
           />
           {targetTemp && (
             <ReferenceLine
               y={targetTemp}
-              stroke="#D4714A"
+              stroke="var(--color-ochre)"
               strokeDasharray="5 5"
-              label={{ value: `Target: ${targetTemp}°F`, fill: '#D4714A', fontWeight: 'bold' }}
+              label={{ value: `Target: ${targetTemp}°F`, fill: 'var(--color-ochre)', fontWeight: 'bold' }}
             />
           )}
           <Line
             type="monotone"
             dataKey="temp"
-            stroke="#E07A5F"
+            stroke="var(--color-ochre)"
             strokeWidth={3}
-            dot={{ fill: '#E07A5F', strokeWidth: 2, r: 4 }}
-            activeDot={{ r: 6, fill: '#D4714A' }}
+            dot={{ fill: 'var(--color-ochre)', strokeWidth: 2, r: 4 }}
+            activeDot={{ r: 6, fill: 'var(--color-terracotta)' }}
           />
         </LineChart>
       </ResponsiveContainer>
